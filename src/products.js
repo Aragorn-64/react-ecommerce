@@ -1,3 +1,5 @@
+import axios from "axios";
+import { async } from "q";
 export const PRODUCTS = [
     {
         id: 1,
@@ -44,10 +46,12 @@ export const PRODUCTS = [
 ]
 
 
-export const fetchProducts = (number) => {
-    let res
-    fetch(`https://fakestoreapi.com/products?limit=${number}`)
-            .then(res=>res.json())
-            .then(json=> res = json)
-    return res
+export const fetchProducts = async (number) => {
+    let res = await axios.get(`https://fakestoreapi.com/products?limit=${number}`);
+    console.log(res);
+            // .then(res => {
+            //     console.log('data sent')
+            //     return res.data
+            // })
+            // .catch(err => console.log(err))
 }

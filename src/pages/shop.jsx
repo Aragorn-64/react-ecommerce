@@ -1,14 +1,27 @@
-import React from 'react'
-import {fetchProducts, PRODUCTS} from '../products'
+import '../App.css';
+import React, {useEffect, useState} from 'react'
+// import {fetchProducts} from '../products'
 import { Product } from '../components/product'
+import { async } from 'q';
+import axios from 'axios';
 export const Shop = () => {
-    let res = fetchProducts()
-    console.log(res)
+    let [products, setProducts] = useState([]);
+    useEffect(() => {
+        const getProductsAPI = async (number = 15) => {
+            const response = await axios.get(`https://fakestoreapi.com/products?limit=${number}`);
+            // console.log(response);
+            setProducts(response.data);
+        }
+        getProductsAPI();
+    },[])
+
+    let prodList = products.map( item => {
+        return <Product item = {item} key={item.id}/>
+    })
     return (
         <>
-            <div>Shop</div>
-            <div className="products grid grid-cols-2">
-            
+            <div className="products">
+                {prodList}
             </div>
         </>
     )
