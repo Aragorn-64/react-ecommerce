@@ -5,10 +5,12 @@ import React, {useEffect, useState} from 'react'
 import { Product } from '../components/product'
 import { async } from 'q';
 import axios from 'axios';
-export const Shop = () => {
+export const Shop = ({prods, setProds}) => {
 
     let [cart, setCart] = useState([]);
+    // const animateAddToCart = () => {
 
+    // }
     const addToCart = function(item){
         // console.log(this.item.title);
         // console.log(this.title)
@@ -47,12 +49,12 @@ export const Shop = () => {
 
 
     return (
-        <>
+        <>  
+            
             <div className="products">
                 {products.isLoading === false ? prodList : <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
             </div>
 
-            
         </>
     )
 }
@@ -60,3 +62,4 @@ export const Shop = () => {
 /* <div>
                 {localStorage.getItem('cart').toString()}
             </div> */
+

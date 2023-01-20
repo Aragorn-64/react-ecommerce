@@ -13,6 +13,10 @@
   width: auto;
 } */
 
+body{
+  background: rgb(255, 213, 141);
+}
+
 .products{
   /* padding: 5%;
   display: grid;
@@ -50,6 +54,11 @@
 .prod-body{
   text-align: center;
   padding-bottom: 2%;
+}
+
+
+.cart-items{
+  padding: 2%;
 }
 
 .add-to-cart{

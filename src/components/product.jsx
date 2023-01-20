@@ -15,7 +15,14 @@ export const Product = (props) => {
           <p className="badge bg-secondary">{props.item.category}</p>
           <p className="card-text">Rating: <b>{props.item.rating.rate}</b> with <b>{props.item.rating.count}</b> reviews</p>
         </div>
-        <button className="btn btn-primary add-to-cart"  onClick={() => props.addToCart(props.item)}>Add to cart</button>
+        <button className="btn btn-primary add-to-cart" 
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title={props.item.title.substr(0,Math.max(props.item.title.length, 15)) + props.item.title.length > 15 ? "..." : ""} 
+                onClick={() => props.addToCart(props.item)}
+        >
+                  Add to cart
+        </button>
       </div>
     </>
   )
